@@ -9,8 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+        
     let hostName = "api.fixer.io"
+    var currencyLabels = [String]()
+    var currencyValues = [Double]()
+    
+    //MARK: - Interactivty Methods
+    
+    @IBAction func barGraphPressed(button: UIButton) {
+        //performSegue(withIdentifier: "barChartSegue", sender: button)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "barChartSegue" {
+            let destVC = segue.destination as! BarChartViewController
+            destVC.currencyLabels = currencyLabels
+            destVC.currencyValues = currencyValues
+        }
+    }
     
     //MARK: - Data Retrieval Methods
     
@@ -18,9 +34,11 @@ class ViewController: UIViewController {
         do {
             let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any]
             print("JSON:\(jsonResult)")
-            let currencyArray = jsonResult["rates"] as! [String:Any]
+            let currencyArray = jsonResult["rates"] as! [String:Double]
             for (key, value) in currencyArray {
                 print("Currency:\(key):\(value)")
+                currencyLabels.append(key)
+                currencyValues.append(value)
             }
                 DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
