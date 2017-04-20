@@ -52,14 +52,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZC-If-yE5" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="RgB-3X-bZA" firstAttribute="top" secondItem="TZC-If-yE5" secondAttribute="bottom" constant="20" id="55Q-EY-ULV"/>
                             <constraint firstAttribute="trailing" secondItem="TZC-If-yE5" secondAttribute="trailing" id="AC3-24-lK2"/>
-                            <constraint firstItem="RgB-3X-bZA" firstAttribute="top" secondItem="TZC-If-yE5" secondAttribute="bottom" id="S5h-Br-c4n"/>
                             <constraint firstItem="TZC-If-yE5" firstAttribute="top" secondItem="vRS-Wl-J3p" secondAttribute="bottom" id="pSG-qY-yTb"/>
                             <constraint firstItem="TZC-If-yE5" firstAttribute="leading" secondItem="N6s-l6-7X6" secondAttribute="leading" id="z0O-9W-mX9"/>
                         </constraints>
@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dt9-g8-E7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1516" y="122"/>
+            <point key="canvasLocation" x="1516" y="121.88905547226388"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1mo-TP-1IU">

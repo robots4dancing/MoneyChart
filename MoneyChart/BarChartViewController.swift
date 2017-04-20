@@ -26,18 +26,17 @@ class BarChartViewController: UIViewController, IAxisValueFormatter {
             return ""
         }
     }
-
     
     func setChart(labels: [String], values: [Double]) {
         barChartView.noDataText = "You need to provide data for the chart."
-        barChartView.chartDescription?.text = ""
+        barChartView.chartDescription?.enabled = false
+        barChartView.legend.enabled = false
         barChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
         barChartView.xAxis.labelRotationAngle = 270.0
         barChartView.leftAxis.axisMinimum = 0
         barChartView.rightAxis.axisMinimum = 0
         barChartView.xAxis.drawGridLinesEnabled = false
         barChartView.xAxis.labelCount = 31
-        barChartView.legend.form = Legend.Form(rawValue: 0)!
         
         var dataEntries = [BarChartDataEntry]()
         
