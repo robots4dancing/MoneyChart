@@ -39,7 +39,7 @@
             </objects>
             <point key="canvasLocation" x="817" y="122"/>
         </scene>
-        <!--Bar Chart View Controller-->
+        <!--Currencies-->
         <scene sceneID="LiG-Tt-2Nh">
             <objects>
                 <viewController id="UwP-Ux-VRB" customClass="BarChartViewController" customModule="MoneyChart" customModuleProvider="target" sceneMemberID="viewController">
@@ -65,7 +65,9 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Currencies" id="3Qz-XZ-yOu"/>
                     <connections>
+                        <outlet property="barChartTitle" destination="3Qz-XZ-yOu" id="ar8-s1-bpP"/>
                         <outlet property="barChartView" destination="TZC-If-yE5" id="x9O-Q1-HEV"/>
                     </connections>
                 </viewController>

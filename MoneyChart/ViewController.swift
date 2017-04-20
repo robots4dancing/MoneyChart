@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
         
     let hostName = "api.fixer.io"
+    var currencyBase    :String?
     var currencyLabels = [String]()
     var currencyValues = [Double]()
     
@@ -23,6 +24,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "barChartSegue" {
             let destVC = segue.destination as! BarChartViewController
+            destVC.currencyBase = currencyBase
             destVC.currencyLabels = currencyLabels
             destVC.currencyValues = currencyValues
         }
@@ -34,8 +36,9 @@ class ViewController: UIViewController {
         do {
             let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any]
             print("JSON:\(jsonResult)")
-            let currencyArray = jsonResult["rates"] as! [String:Double]
-            for (key, value) in currencyArray {
+            currencyBase = jsonResult["base"] as? String
+            let currencyDictionary = jsonResult["rates"] as! [String:Double]
+            for (key, value) in currencyDictionary {
                 print("Currency:\(key):\(value)")
                 currencyLabels.append(key)
                 currencyValues.append(value)

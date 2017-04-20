@@ -11,10 +11,13 @@ import Charts
 
 class BarChartViewController: UIViewController, IAxisValueFormatter {
     
+    var currencyBase    :String?
     var currencyLabels = [String]()
     var currencyValues = [Double]()
     var currencyDictionary = [Double:String]()
 
+    @IBOutlet weak var barChartView     :BarChartView!
+    @IBOutlet weak var barChartTitle    :UINavigationItem!
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         if let currency = currencyDictionary[value] {
@@ -23,8 +26,7 @@ class BarChartViewController: UIViewController, IAxisValueFormatter {
             return ""
         }
     }
-    
-    @IBOutlet weak var barChartView :BarChartView!
+
     
     func setChart(labels: [String], values: [Double]) {
         barChartView.noDataText = "You need to provide data for the chart."
@@ -33,6 +35,9 @@ class BarChartViewController: UIViewController, IAxisValueFormatter {
         barChartView.xAxis.labelRotationAngle = 270.0
         barChartView.leftAxis.axisMinimum = 0
         barChartView.rightAxis.axisMinimum = 0
+        barChartView.xAxis.drawGridLinesEnabled = false
+        barChartView.xAxis.labelCount = 31
+        barChartView.legend.form = Legend.Form(rawValue: 0)!
         
         var dataEntries = [BarChartDataEntry]()
         
@@ -42,7 +47,7 @@ class BarChartViewController: UIViewController, IAxisValueFormatter {
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Currencies")
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "")
         chartDataSet.colors = ChartColorTemplates.joyful()
         let chartData = BarChartData(dataSet: chartDataSet)
         barChartView.data = chartData
@@ -50,6 +55,7 @@ class BarChartViewController: UIViewController, IAxisValueFormatter {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        barChartTitle.title = "Compared to \(currencyBase!)"
         setChart(labels: currencyLabels, values: currencyValues)
         barChartView.xAxis.valueFormatter = self
         print(currencyLabels.count)
