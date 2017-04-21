@@ -40,8 +40,12 @@ class ViewController: UIViewController {
             let currencyDictionary = jsonResult["rates"] as! [String:Double]
             for (key, value) in currencyDictionary {
                 print("Currency:\(key):\(value)")
+                if key != "IDR" && key != "KRW" {
                 currencyLabels.append(key)
                 currencyValues.append(value)
+                } else {
+                    continue
+                }
             }
                 DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false

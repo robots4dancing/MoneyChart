@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class BarChartViewController: UIViewController, IAxisValueFormatter {
+class BarChartViewController: UIViewController, IAxisValueFormatter, IValueFormatter{
     
     var currencyBase    :String?
     var currencyLabels = [String]()
@@ -27,6 +27,10 @@ class BarChartViewController: UIViewController, IAxisValueFormatter {
         }
     }
     
+    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        return String(format: "%.2f", value)
+    }
+    
     func setChart(labels: [String], values: [Double]) {
         barChartView.noDataText = "You need to provide data for the chart."
         barChartView.chartDescription?.enabled = false
@@ -37,6 +41,8 @@ class BarChartViewController: UIViewController, IAxisValueFormatter {
         barChartView.rightAxis.axisMinimum = 0
         barChartView.xAxis.drawGridLinesEnabled = false
         barChartView.xAxis.labelCount = 31
+        barChartView.xAxis.granularity = 1
+
         
         var dataEntries = [BarChartDataEntry]()
         
@@ -47,9 +53,12 @@ class BarChartViewController: UIViewController, IAxisValueFormatter {
         }
         
         let chartDataSet = BarChartDataSet(values: dataEntries, label: "")
+        chartDataSet.valueFormatter = self
         chartDataSet.colors = ChartColorTemplates.joyful()
         let chartData = BarChartData(dataSet: chartDataSet)
         barChartView.data = chartData
+        barChartView.setScaleMinima(2.9, scaleY: 10)
+
     }
 
     override func viewDidLoad() {
