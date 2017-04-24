@@ -12,6 +12,7 @@ import Charts
 class BarChartViewController: UIViewController, IAxisValueFormatter, IValueFormatter{
     
     var currencyBase    :String?
+    var currencyDate    :String?
     var currencyLabels = [String]()
     var currencyValues = [Double]()
     var currencyDictionary = [Double:String]()
@@ -57,17 +58,16 @@ class BarChartViewController: UIViewController, IAxisValueFormatter, IValueForma
         chartDataSet.colors = ChartColorTemplates.joyful()
         let chartData = BarChartData(dataSet: chartDataSet)
         barChartView.data = chartData
-        barChartView.setScaleMinima(2.9, scaleY: 10)
-
+        barChartView.setScaleMinima(2.9, scaleY: 8)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        barChartTitle.title = "Compared to \(currencyBase!)"
+        barChartTitle.title = "Compared to \(currencyBase!) \(currencyDate!)"
         setChart(labels: currencyLabels, values: currencyValues)
         barChartView.xAxis.valueFormatter = self
-        print(currencyLabels.count)
-        print(currencyValues.count)
+        //print(currencyLabels.count)
+        //print(currencyValues.count)
     }
 
     override func didReceiveMemoryWarning() {

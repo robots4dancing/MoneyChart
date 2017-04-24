@@ -6,10 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Money Chart-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MoneyChart" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,23 +22,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHD-4j-XGG">
-                                <rect key="frame" x="152" y="72" width="70" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rwa-vk-jKr">
+                                <rect key="frame" x="16" y="72" width="343" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="sy8-Jp-fvF"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="514496214.71093303">
+                                    <!--2017-04-21 19:36:54 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHD-4j-XGG">
+                                <rect key="frame" x="16" y="276" width="343" height="30"/>
+                                <color key="backgroundColor" red="0.78789097070000003" green="0.78809326889999998" blue="0.80959695580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Bar Graph"/>
                                 <connections>
                                     <action selector="barGraphPressedWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JeU-0G-Osg"/>
-                                    <segue destination="UwP-Ux-VRB" kind="show" identifier="barChartSegue" id="y8I-PG-EZs"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Bid-pP-Whs">
+                                <rect key="frame" x="16" y="160" width="343" height="108"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hj9-dw-OTW">
+                                        <rect key="frame" x="0.0" y="0.0" width="168" height="108"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="80"/>
+                                        <state key="normal" title="$">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="usdPressedWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0eM-Mp-Liq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dq1-y6-NR7">
+                                        <rect key="frame" x="175" y="0.0" width="168" height="108"/>
+                                        <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="80"/>
+                                        <state key="normal" title="€">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="eurPressedWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G7s-TH-CeY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bid-pP-Whs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1Bk-4X-kfy"/>
+                            <constraint firstItem="pHD-4j-XGG" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="FAx-rg-PSh"/>
+                            <constraint firstItem="pHD-4j-XGG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Hv5-IT-1G6"/>
+                            <constraint firstItem="rwa-vk-jKr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Tey-nk-AhC"/>
+                            <constraint firstItem="Bid-pP-Whs" firstAttribute="top" secondItem="rwa-vk-jKr" secondAttribute="bottom" constant="8" id="UI0-vY-c2D"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bid-pP-Whs" secondAttribute="trailing" id="Z97-ST-oVG"/>
+                            <constraint firstItem="pHD-4j-XGG" firstAttribute="top" secondItem="Bid-pP-Whs" secondAttribute="bottom" constant="8" id="fHh-Gj-BQO"/>
+                            <constraint firstItem="rwa-vk-jKr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="oNX-0U-IJe"/>
+                            <constraint firstItem="rwa-vk-jKr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="qZz-Yo-B4j"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="XI8-VF-cL6"/>
+                    <navigationItem key="navigationItem" title="Money Chart" id="XI8-VF-cL6"/>
+                    <connections>
+                        <outlet property="currencyDatePicker" destination="rwa-vk-jKr" id="rkV-z9-PdC"/>
+                        <outlet property="eurButton" destination="Dq1-y6-NR7" id="jzg-Qk-bwS"/>
+                        <outlet property="usdButton" destination="hj9-dw-OTW" id="kM8-4N-DHU"/>
+                        <segue destination="UwP-Ux-VRB" kind="show" identifier="barChartSegue" id="uVU-h5-CkA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="817" y="122"/>
+            <point key="canvasLocation" x="816.79999999999995" y="121.88905547226388"/>
         </scene>
         <!--Currencies-->
         <scene sceneID="LiG-Tt-2Nh">
